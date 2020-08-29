@@ -42,7 +42,16 @@ brave.hp = 500
 brave.offense = 150
 brave.defense = 100
 
-puts brave.name
-puts brave.hp
-puts brave.offense
-puts brave.defense
+# ヒアドキュメンと貴方で書けばputsや
+# クオーテーションを書く回数が減る。
+puts <<~TEXT
+NAME：#{brave.name}
+HP：#{brave.hp}
+OFFENSE：#{brave.offense}
+DEFENSE：#{brave.defense}
+TEXT
+
+# puts "NAME: #{brave.name}"
+# puts "HP: #{brave.hp}"
+# puts "OFFENSE: #{brave.offense}"
+# puts "DEFENSE: #{brave.defense}" 
