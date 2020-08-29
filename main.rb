@@ -1,5 +1,11 @@
 class Brave
 
+  # attr_readerの記述でゲッターを省略することができる
+  # 複数の値を同時に指定することができる
+  attr_reader :name, :offense, :defense
+
+  attr_accessor :hp
+
   # initializeメソッドを定義
   # new演算子から渡された引数を受け取る
   # 引数に**を記述：ハッシュしか受け取れなくなる
@@ -8,23 +14,6 @@ class Brave
     @hp = params[:hp]
     @offense = params[:offense]
     @defense = params[:defense]
-  end
-
-  # ゲッターの定義？
-  def name
-    @name
-  end
-
-  def hp
-    @hp
-  end
-
-  def offense
-    @offense
-  end
-
-  def defense
-    @defense
   end
 
 end
@@ -39,3 +28,7 @@ HP：#{brave.hp}
 OFFENSE：#{brave.offense}
 DEFENSE：#{brave.defense}
 TEXT
+
+brave.hp -= 30
+
+puts "#{brave.name}はダメージを受けた！ 残りHPは#{brave.hp}だ"
