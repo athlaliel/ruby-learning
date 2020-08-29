@@ -1,11 +1,13 @@
 class Brave
 
   # initializeメソッドを定義
-  def initialize
-    @name = "テリー"
-    @hp = 500
-    @offense =150
-    @defense = 100
+  # new演算子から渡された引数を受け取る
+  # 引数に**を記述：ハッシュしか受け取れなくなる
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
   end
 
   # ゲッターの定義？
@@ -27,7 +29,7 @@ class Brave
 
 end
 
-brave = Brave.new
+brave = Brave.new(name:"テリー", hp:500,offense:150, defense:100)
 
 # ヒアドキュメンと貴方で書けばputsや
 # クオーテーションを書く回数が減る。
