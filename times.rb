@@ -1,3 +1,3 @@
-5000000.times do |i|
+50.times do |i|
   puts i + 1
 end
