@@ -63,12 +63,27 @@ class Monster
     @defense = params[:defense]
   end
 
+  def attack(brave)
+
+    puts "#{@name}の攻撃！"
+
+    damage = @offense - brave.defense
+
+    brave.hp -= damage
+
+    puts "#{brave.name}は#{damage}のダメージを受けた！"
+    puts "#{brave.name}の残りHPは#{brave.hp}だ"
+
+  end
+
 end
 
 brave = Brave.new(name:"テリー", hp:500,offense:150, defense:100)
 monster = Monster.new(name:"スライム", hp:250, offense:200, defense:100)
 
 brave.attack(monster)
+monster.attack(brave)
+
 
 # ヒアドキュメンと貴方で書けばputsや
 # クオーテーションを書く回数が減る。
