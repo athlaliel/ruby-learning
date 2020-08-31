@@ -56,6 +56,8 @@ class Monster
   attr_reader :name, :offense, :defense
   attr_accessor :hp
 
+  HP_DOWN_HARF = 1.5
+
   def initialize(**params)
     @name = params[:name]
     @hp = params[:hp]
@@ -68,7 +70,7 @@ class Monster
     puts "#{@name}の攻撃！"
 
     damage = @offense - brave.defense
-
+    
     brave.hp -= damage
 
     puts "#{brave.name}は#{damage}のダメージを受けた！"
