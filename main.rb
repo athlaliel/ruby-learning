@@ -5,7 +5,9 @@ class Brave
   attr_reader :name, :offense, :defense
   attr_accessor :hp
 
-  # initializeメソッドを定義
+  # 必殺攻撃の計算に使う定数
+  SPECIAL_ATTACK_CONSTANT = 1.5
+
   # new演算子から渡された引数を受け取る
   # 引数に**を記述：ハッシュしか受け取れなくなる
   def initialize(**params)
@@ -16,15 +18,41 @@ class Brave
   end
 
   def attack(monster)
-    puts "テスト:#{monster.name}のHPを表示 -> #{monster.hp}"
+
+    puts "#{@name}の攻撃！"
+
+    # 0~3の間でランダムに数字が変わる
+    attack_num = rand(4)
+
+    # 4分の1の確率でspecial_attackを実行
+    if attack_num == 0
+      puts "会心の一撃！！"
+      # calculate_special_attackの呼び出し
+      # 攻撃力の1.5倍の数値が戻り値として返ってくる
+      damage = calculate_special_attack
+    else
+      puts "通常攻撃"
+      damage = @offense - monster.defense
+    end
+
+    # monster.hp = monster.hp - damage
+    # 自己代入：monster.hpからdamageを引いた値をmonster.hpに代入
+    # 下記でも可能だが、下がより短い記述
+    monster.hp -= damage
+
+    puts "#{monster.name}は#{damage}のダメージを受けた！"
+    puts "#{monster.name}の残りHPは#{monster.hp}だ"
+  end
+
+  def calculate_special_attack
+    # 攻撃力が1.5倍
+    offense * 1.5
   end
 
 end
 
-brave.attack(monster)
 
 class Monster
-
   attr_reader :name, :offense, :defense
   attr_accessor :hp
 
@@ -39,6 +67,8 @@ end
 
 brave = Brave.new(name:"テリー", hp:500,offense:150, defense:100)
 monster = Monster.new(name:"スライム", hp:250, offense:200, defense:100)
+
+brave.attack(monster)
 
 # ヒアドキュメンと貴方で書けばputsや
 # クオーテーションを書く回数が減る。
