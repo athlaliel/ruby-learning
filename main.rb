@@ -57,26 +57,50 @@ class Monster
   attr_accessor :hp
 
   HP_DOWN_HARF = 1.5
+  CALC_HARF_HP = 0.5
 
   def initialize(**params)
     @name = params[:name]
     @hp = params[:hp]
     @offense = params[:offense]
     @defense = params[:defense]
+
+    @transform = false
+    @hp_calc = params[:hp]*CALC_HARF_HP
   end
 
   def attack(brave)
 
+    if @hp <= @hp_calc && @transform == false
+      @transform = true
+      transform
+    end
+
     puts "#{@name}の攻撃！"
 
     damage = @offense - brave.defense
-    
     brave.hp -= damage
 
     puts "#{brave.name}は#{damage}のダメージを受けた！"
     puts "#{brave.name}の残りHPは#{brave.hp}だ"
-
   end
+
+  private
+
+    def transform
+
+      transform_name = "キングスライム"
+
+      puts <<~EOS
+      #{@name}は怒っている！
+      #{@name}仲間を呼び合体!
+      #{transform_name}になった！"
+      EOS
+
+      @offense *= HP_DOWN_HARF
+      @name = transform_name
+
+    end
 
 end
 
