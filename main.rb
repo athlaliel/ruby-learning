@@ -18,35 +18,55 @@ class Brave
   end
 
   def attack(monster)
-
     puts "#{@name}の攻撃！"
 
+    attack_type = attack_pattern
+    damage = calculate_damage(target: monster, attack_type: attack_type)
+
+    cause_damage(target: monster, damage: damage)
+
+    puts "#{monster.name}の残りHPは#{monster.hp}だ"
+  end
+
+private
+  def attack_pattern
     # 0~3の間でランダムに数字が変わる
     attack_num = rand(4)
 
     # 4分の1の確率でspecial_attackを実行
     if attack_num == 0
-      puts "会心の一撃！！"
-      # calculate_special_attackの呼び出し
-      # 攻撃力の1.5倍の数値が戻り値として返ってくる
-      damage = calculate_special_attack
+      puts "会心の一撃！！！"
+      "special_attack"
     else
-      puts "通常攻撃"
-      damage = @offense - monster.defense
+      puts "通常攻撃！"
+      "normal_attack"
     end
+  end
 
-    # monster.hp = monster.hp - damage
-    # 自己代入：monster.hpからdamageを引いた値をmonster.hpに代入
-    # 下記でも可能だが、下がより短い記述
-    monster.hp -= damage
+  # **paramsで受け取る
+  def calculate_damage(**params)
+    # 変数に格納することによって将来ハッシュのキーに変更があった場合でも変更箇所が少なくて済む
 
-    puts "#{monster.name}は#{damage}のダメージを受けた！"
-    puts "#{monster.name}の残りHPは#{monster.hp}だ"
+    target = params[:target]
+    attack_type = params[:attack_type]
+
+    if attack_type == "special_attack"
+      calculate_special_attack - target.defense
+    else
+      @offense - target.defense
+    end
+  end
+
+  def cause_damage(**params)
+    damage = params[:damage]
+    target = params[:target]
+    
+    target.hp -= damage
+    puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
   def calculate_special_attack
-    # 攻撃力が1.5倍
-    offense * 1.5
+    @offense * SPECIAL_ATTACK_CONSTANT
   end
 
 end
@@ -94,7 +114,7 @@ class Monster
       puts <<~EOS
       #{@name}は怒っている！
       #{@name}仲間を呼び合体!
-      #{transform_name}になった！"
+      #{transform_name}になった！
       EOS
 
       @offense *= HP_DOWN_HARF
@@ -111,7 +131,7 @@ brave.attack(monster)
 monster.attack(brave)
 
 
-# ヒアドキュメンと貴方で書けばputsや
+# ヒアドキュメントで書けばputsや
 # クオーテーションを書く回数が減る。
 
 # puts <<~TEXT
