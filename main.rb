@@ -1,5 +1,4 @@
 class Brave
-
   # attr_readerの記述でゲッターを省略することができる
   # 複数の値を同時に指定することができる
   attr_reader :name, :offense, :defense
@@ -98,29 +97,44 @@ class Monster
 
     puts "#{@name}の攻撃！"
 
-    damage = @offense - brave.defense
-    brave.hp -= damage
+    damage = calculate_damage(brave)
 
-    puts "#{brave.name}は#{damage}のダメージを受けた！"
+    # damage = @offense - brave.defense
+    # brave.hp -= damage
+
+    cause_damage(target: brave, damage: damage)
+
     puts "#{brave.name}の残りHPは#{brave.hp}だ"
   end
 
   private
 
-    def transform
+  def calculate_damage(target)
+    @offense - target.defense
+  end
 
-      transform_name = "キングスライム"
+  def cause_damage(**params)
+    damage = params[:damage]
+    target = params[:target]
 
-      puts <<~EOS
-      #{@name}は怒っている！
-      #{@name}仲間を呼び合体!
-      #{transform_name}になった！
-      EOS
+    target -= damage
+    puts "#{brave.name}は#{damage}のダメージを受けた！"
+  end
 
-      @offense *= HP_DOWN_HARF
-      @name = transform_name
+  def transform
 
-    end
+    transform_name = "キングスライム"
+
+    puts <<~EOS
+    #{@name}は怒っている！
+    #{@name}仲間を呼び合体!
+    #{transform_name}になった！
+    EOS
+
+    @offense *= HP_DOWN_HARF
+    @name = transform_name
+
+  end
 
 end
 
