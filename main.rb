@@ -61,6 +61,10 @@ private
     target = params[:target]
     
     target.hp -= damage
+
+    # もしターゲットのHPがマイナスになるなら0を代入
+    target.hp = 0 if target.hp < 0
+
     puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
@@ -118,6 +122,10 @@ class Monster
     target = params[:target]
 
     target.hp -= damage
+
+    # もしターゲットのHPがマイナスになるなら0を代入
+    target.hp = 0 if target.hp < 0
+
     puts "#{target.name}は#{damage}のダメージを受けた！"
   end
 
@@ -141,7 +149,16 @@ monster = Monster.new(name:"スライム", hp:250, offense:200, defense:100)
 
 loop do
   brave.attack(monster)
+  if monster.hp <= 0
+    break 
+  end
+
   monster.attack(brave)
+
+  if brave.hp <= 0
+    break
+  end
+
 end
 
 
