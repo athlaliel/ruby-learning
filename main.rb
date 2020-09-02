@@ -117,12 +117,11 @@ class Monster
     damage = params[:damage]
     target = params[:target]
 
-    target -= damage
-    puts "#{brave.name}は#{damage}のダメージを受けた！"
+    target.hp -= damage
+    puts "#{target.name}は#{damage}のダメージを受けた！"
   end
 
   def transform
-
     transform_name = "キングスライム"
 
     puts <<~EOS
@@ -133,7 +132,6 @@ class Monster
 
     @offense *= HP_DOWN_HARF
     @name = transform_name
-
   end
 
 end
@@ -141,8 +139,10 @@ end
 brave = Brave.new(name:"テリー", hp:500,offense:150, defense:100)
 monster = Monster.new(name:"スライム", hp:250, offense:200, defense:100)
 
-brave.attack(monster)
-monster.attack(brave)
+loop do
+  brave.attack(monster)
+  monster.attack(brave)
+end
 
 
 # ヒアドキュメントで書けばputsや
