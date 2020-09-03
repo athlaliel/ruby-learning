@@ -150,25 +150,19 @@ monster = Monster.new(name:"スライム", hp:250, offense:200, defense:100)
 loop do
   brave.attack(monster)
   if monster.hp <= 0
+    exp = (monster.offense + monster.defense)*2
+    gold = (monster.offense + monster.defense)*3
+    puts "#{brave.name}は戦闘に勝利した！"
+    puts "#{exp}の経験値と#{gold}のお金をゲットした！"
     break 
   end
 
   monster.attack(brave)
   if brave.hp <= 0
+    puts "#{brave.name}は戦闘に敗北した......"
+    puts "GAME 0VER"
     break
   end
-end
-
-battle_result = brave.hp > 0
-
-if battle_result
-  exp = (monster.offense + monster.defense)*2
-  gold = (monster.offense + monster.defense)*3
-  puts "#{brave.name}は戦闘に勝利した！"
-  puts "#{exp}の経験値と#{gold}のお金をゲットした！"
-else
-  puts "#{brave.name}は戦闘に敗北した......"
-  puts "GAME 0VER"
 end
 
 
