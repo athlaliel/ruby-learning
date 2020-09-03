@@ -154,11 +154,21 @@ loop do
   end
 
   monster.attack(brave)
-
   if brave.hp <= 0
     break
   end
+end
 
+battle_result = brave.hp > 0
+
+if battle_result
+  exp = (monster.offense + monster.defense)*2
+  gold = (monster.offense + monster.defense)*3
+  puts "#{brave.name}は戦闘に勝利した！"
+  puts "#{exp}の経験値と#{gold}のお金をゲットした！"
+else
+  puts "#{brave.name}は戦闘に敗北した......"
+  puts "GAME 0VER"
 end
 
 
