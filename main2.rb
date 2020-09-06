@@ -11,18 +11,18 @@ class Character
 end
 
 
-class Brave
-  attr_reader :name, :offense, :defense
-  attr_accessor :hp
+class Brave < Character
+  # attr_reader :name, :offense, :defense
+  # attr_accessor :hp
 
   SPECIAL_ATTACK_CONSTANT = 1.5
 
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
+  # def initialize(**params)
+  #   @name = params[:name]
+  #   @hp = params[:hp]
+  #   @offense = params[:offense]
+  #   @defense = params[:defense]
+  # end
 
   def attack(monster)
     puts "#{@name}の攻撃！"
@@ -76,18 +76,24 @@ private
   end
 end
 
-class Monster
-  attr_reader :offense, :defense
-  attr_accessor :hp, :name
+class Monster < Character
+  # attr_reader :offense, :defense
+  # attr_accessor :hp, :name
 
   HP_DOWN_HARF = 1.5
   CALC_HARF_HP = 0.5
 
   def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
+    # @name = params[:name]
+    # @hp = params[:hp]
+    # @offense = params[:offense]
+    # @defense = params[:defense]
+    super(
+      name: params[:name]
+      hp: params[:hp]
+      offense: params[:offense]
+      defense: params[:defense]
+    )
 
     @transform = false
     @hp_calc = params[:hp]*CALC_HARF_HP
