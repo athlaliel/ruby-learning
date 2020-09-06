@@ -19,7 +19,22 @@ module MessageDialog
     EOS
   end
 
-  def end_message
-  end
+  def end_message(result)
+    if result[:brave_win_flag]
+      puts <<~EOS
 
+      勇者は戦闘に勝利した
+      #{result[:exp]}の経験値と#{result[:gold]}のゴールドを手に入れた
+
+      EOS
+    else
+      puts <<~EOS
+
+      勇者は戦闘に敗北してしまった.......
+      おぉ、負けてしまうとは情けない
+      GAMEOVER
+
+      EOS
+    end
+  end
 end
