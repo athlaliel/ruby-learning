@@ -1,14 +1,4 @@
-class Character
-  attr_reader :offense, :defense
-  attr_accessor :hp, :name
-
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
-end
+require './character'
 
 
 class Brave < Character
@@ -89,9 +79,9 @@ class Monster < Character
     # @offense = params[:offense]
     # @defense = params[:defense]
     super(
-      name: params[:name]
-      hp: params[:hp]
-      offense: params[:offense]
+      name: params[:name],
+      hp: params[:hp],
+      offense: params[:offense],
       defense: params[:defense]
     )
 
