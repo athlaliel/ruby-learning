@@ -38,11 +38,11 @@ private
 
     if brave_win?
       result = calculate_of_exp_and_gold
-      puts "#{@brave.name}は戦闘に勝利した！"
-      puts "#{result[:exp]}の経験値と#{result[:gold]}のお金をゲットした！"
+      # puts "#{@brave.name}は戦闘に勝利した！"
+      # puts "#{result[:exp]}の経験値と#{result[:gold]}のお金をゲットした！"
     else
-      puts "#{@brave.name}は戦闘に敗北した......"
-      puts "GAME 0VER"
+      # puts "#{@brave.name}は戦闘に敗北した......"
+      # puts "GAME 0VER"
     end
   end
 
