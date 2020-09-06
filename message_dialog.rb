@@ -1,5 +1,4 @@
 module MessageDialog
-
   def attack_message(**params)
     attack_type = params[:attack_type]
 
@@ -9,7 +8,7 @@ module MessageDialog
 
   def damage_message(**params)
     target = params[:target]
-    damage = params[damage]
+    damage = params[:damage]
 
     puts <<~EOS
 
@@ -36,5 +35,19 @@ module MessageDialog
 
       EOS
     end
+  end
+
+  def transform_message(**params)
+    origin_name = params[:origin_name]
+    transform_name = params[:transform_name]
+
+    puts <<~EOS
+
+    #{origin_name}は仲間を呼んで合体した！
+    #{origin_name}は#{transform_name}へと姿を変えた！
+    #{transform_name}が現れた！
+    #{transform_name}が『仲間にしてやるぞ』と言いたげに睥睨している.....
+
+    EOS
   end
 end
