@@ -21,6 +21,8 @@ puts <<~text
 ---------------------------------------
 text
 
+sleep 1
+
 games_controller = Games_controller.new
 
 terry = Brave.new(name:"テリー", hp:500, offense:150, defense:100)
