@@ -1,10 +1,80 @@
-// 年月の指定
-var year = 2018;
-var month = 5;
- 
 window.onload = function() {
-    var data = generate_month_calendar(year, month);
-    document.getElementById('calendar').appendChild(data);
+    // 現在の年月の取得
+    var current = new Date();
+    var year = current.getFullYear();
+    var month = current.getMonth() + 1;
+ 
+    // カレンダーの表示
+    var wrapper = document.getElementById('calendar');
+    add_calendar(wrapper, year, month);
+}
+ 
+/**
+ * 指定した年月のカレンダーを表示する
+ * @param {object} wrapper - カレンダーを追加する親要素
+ * @param {number} year    - 年の指定
+ * @param {number} month   - 月の指定
+ */
+function add_calendar(wrapper, year, month) {
+    // 現在カレンダーが追加されている場合は一旦削除する
+    wrapper.textContent = null;
+ 
+    // カレンダーに表示する内容を取得
+    var headData = generate_calendar_header(wrapper, year, month);
+    var bodyData = generate_month_calendar(year, month);
+ 
+    // カレンダーの要素を追加
+    wrapper.appendChild(headData);
+    wrapper.appendChild(bodyData);
+}
+ 
+/**
+ * 指定した年月のカレンダーのヘッダー要素を生成して返す
+ * @param {object} wrapper - カレンダーを追加する親要素
+ * @param {number} year    - 年の指定
+ * @param {number} month   - 月の指定
+ */
+function generate_calendar_header(wrapper, year, month) {
+    // 前月と翌月を取得
+    var nextMonth = new Date(year, (month - 1));
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    var prevMonth = new Date(year, (month - 1));
+    prevMonth.setMonth(prevMonth.getMonth() - 1);
+ 
+    // ヘッダー要素
+    var cHeader = document.createElement('div');
+    cHeader.className = 'calendar-header';
+ 
+    // 見出しの追加
+    var cTitle = document.createElement('div');
+    cTitle.className = 'calendar-header__title';
+    var cTitleText = document.createTextNode(year + '年' + month + '月');
+    cTitle.appendChild(cTitleText);
+    cHeader.appendChild(cTitle);
+ 
+    // 前月ボタンの追加
+    var cPrev = document.createElement('button');
+    cPrev.className = 'calendar-header__prev';
+    var cPrevText = document.createTextNode('prev');
+    cPrev.appendChild(cPrevText);
+    // 前月ボタンをクリックした時のイベント設定
+    cPrev.addEventListener('click', function() {
+        add_calendar(wrapper, prevMonth.getFullYear(), (prevMonth.getMonth() + 1));
+    }, false);
+    cHeader.appendChild(cPrev);
+ 
+    // 翌月ボタンの追加
+    var cNext = document.createElement('button');
+    cNext.className = 'calendar-header__next';
+    var cNextText = document.createTextNode('next');
+    cNext.appendChild(cNextText);
+    // 翌月ボタンをクリックした時のイベント設定
+    cNext.addEventListener('click', function() {
+        add_calendar(wrapper, nextMonth.getFullYear(), (nextMonth.getMonth() + 1));
+    }, false);
+    cHeader.appendChild(cNext);
+ 
+    return cHeader;
 }
  
 /**
