@@ -15,3 +15,7 @@ puts pencil_case.length
 #irb(main):001:0> ['あお', 'きいろ', 'あか'].length
 #=> 3
 #length だから数を計算してくれる。
+
+job_list = ["フロント", "サーバーサイド", "インフラ"]
+puts job_list
+puts "#{job_list}は全部で３種類です。"

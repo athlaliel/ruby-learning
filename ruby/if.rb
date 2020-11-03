@@ -11,6 +11,8 @@ else
   puts "あなたは女性ですね。ありがとう！"
 end
 
+sleep 2
+
 puts "問題②\nあなたは日本人ですか？\nYES or NO を入力してください"
 japan = gets.chomp
 
