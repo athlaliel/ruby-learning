@@ -1,3 +1,24 @@
+puts "小文字を大文字に変換せよ"
+spel_change = gets
+puts spel_change.upcase
+
+puts "大文字を小文字にせよ"
+spel_change = gets
+puts spel_change.downcase
+
+puts "スイッチのオンオフを偶数か奇数で判定するメソッド問題です。"
+num1 = gets.to_i
+if num1.odd?
+    puts "ON"
+else num1.even?
+    puts "OFF"
+end
+
+puts "num1とnum2の割った余りを求めよ"
+num1 = gets.to_i
+num2 = gets.to_i
+puts num1 % num2
+
 # puts "何角形か算出せよ"
 # shape = gets.to_i / 180 + 2
 # puts shape
@@ -37,23 +58,23 @@
 #     end
 # }
 
-change_leet = gets.chomp
-change_leet.gsub!(/A/,'4')
-change_leet.gsub!(/E/,'3')
-change_leet.gsub!(/G/,'6')
-change_leet.gsub!(/I/,'1')
-change_leet.gsub!(/O/,'0')
-change_leet.gsub!(/S/,'5')
-change_leet.gsub!(/Z/,'2')
-puts change_leet
+# change_leet = gets.chomp
+# change_leet.gsub!(/A/,'4')
+# change_leet.gsub!(/E/,'3')
+# change_leet.gsub!(/G/,'6')
+# change_leet.gsub!(/I/,'1')
+# change_leet.gsub!(/O/,'0')
+# change_leet.gsub!(/S/,'5')
+# change_leet.gsub!(/Z/,'2')
+# puts change_leet
 
-puts "日付を出力し、/で区切る"
-#splitで分割し、joinでくっつける
-#pだけ打てば配列出力してくれる
-input = gets
-puts input.split.join("/")
+# puts "日付を出力し、/で区切る"
+# #splitで分割し、joinでくっつける
+# #pだけ打てば配列出力してくれる
+# input = gets
+# puts input.split.join("/")
 
-puts "pだけ打てばデバッグ用"
-input = "早く人間になりたい"
-puts input.chars
-p input.chars
+# puts "pだけ打てばデバッグ用"
+# input = "早く人間になりたい"
+# puts input.chars
+# p input.chars
