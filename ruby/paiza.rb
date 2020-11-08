@@ -1,12 +1,26 @@
+puts "モンスターはランダムに現れる"
+number = rand(1..100) #ランダムメソッド
+puts "スライムが#{number}匹現れた"
+
+puts "先頭の小文字を大文字に変換せよ"
+spel_change = gets
+puts spel_change.capitalize #先頭の小文字を大文字に変換
+
+puts "小文字を大文字に、大文字を小文字に変換せよ"
+spel_change = gets
+puts spel_change.swapcase #小文字を大文字に、大文字を小文字に変換
+
 puts "小文字を大文字に変換せよ"
 spel_change = gets
-puts spel_change.upcase
+puts spel_change.upcase #小文字を大文字に変換
 
 puts "大文字を小文字にせよ"
 spel_change = gets
-puts spel_change.downcase
+puts spel_change.downcase #大文字を小文字にせよ
 
-puts "スイッチのオンオフを偶数か奇数で判定するメソッド問題です。"
+puts "スイッチのオンオフを偶数か奇数で判定するメソッド問題です。\n"
+puts "偶数ならeven?、奇数ならodd?が作動します。"
+puts "数字を入力してください。"
 num1 = gets.to_i
 if num1.odd?
     puts "ON"
