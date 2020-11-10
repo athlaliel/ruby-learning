@@ -4,6 +4,10 @@ SELECT item_nm, sales_date,unit_price, qty, sales_amt
 from sales
 where item_nm = "クルトガ" and sales_amt < 10000
 
+SELECT item_nm, sales_date, unit_price, qty, sales_amt
+from sales
+where item_nm = "クルトガ" and sales_amt < 10000
+
 -- テーブル「sales」のcust_nm、item_nm、sales_date、unit_price、qty、sales_amtをcust_nmが
 -- A文具店、B商店、C雑貨店のデータを抽出せよ。
 select cust_nm , item_nm , sales_date , unit_price , qty, sales_amt 
