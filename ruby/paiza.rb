@@ -1,3 +1,42 @@
+puts "整数を入力し、任意の配列から指定した単語を取り出す"
+word_number = gets.to_i
+word_list = gets.split(' ')
+puts word_list[word_number - 1]
+
+
+puts "N倍の文字列の出力\n入力した整数を※の個数で出力せよ"
+number = gets.to_i
+astarisc = "*" * number
+puts astarisc
+
+
+# while文にはカウント変数が必須
+#putsの下に記述しておかないと無限ループになってしまう。
+i = 0
+while i <= 4
+    puts "ハロー、paizaラーニング"
+    i = i + 1
+end
+
+# whileによるループ処理
+i = 2
+while i <= 10
+    puts i
+    i = i + 2
+end
+
+
+for month in 1..12
+  puts "#{month}月"
+end
+
+
+puts "メールアドレスを作成し、@を含んで改行を無くして出力"
+s = gets.to_s
+t = gets.to_s
+puts s.chomp + "@" + t
+
+
 puts "モンスターはランダムに現れる"
 number = rand(1..100) #ランダムメソッド
 puts "スライムが#{number}匹現れた"
