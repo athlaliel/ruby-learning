@@ -1,3 +1,19 @@
+#for inを利用しhtml出力すると、プルダウンが作れる
+puts "<select name='age'>"
+for age in 1..100
+    puts "<option>#{age}才</option>"
+end
+puts "</select>"
+
+#リストを使用した場合
+puts "<ul>"
+
+for number in 1..100
+    puts "<li>#{number}</li>"
+end
+
+puts "</ul>"
+
 #whileを使って、20から10までの奇数を一行ずつカウントダウン表示するプログラムを作成してください。
 i = 19
 while i > 9
@@ -13,6 +29,8 @@ while i > 9
     puts i
     i = i - hit
 end
+
+
 
 puts "バブルスライムが現れた\n与えるダメージを数値で入力せよ！"
 #バブルスライムを倒すまで、数字を入力し続けるループ処理
