@@ -6,3 +6,9 @@ n = liquor_people[0].to_i
 m = liquor_people[1].to_i
 
 puts (n * 6000 ) + (m * 4000)
+
+liquor_people = gets.chomp.split
+n = liquor_people[0].to_i
+m = liquor_people[1].to_i
+
+puts (n * 6000 ) + (m * 4000)
